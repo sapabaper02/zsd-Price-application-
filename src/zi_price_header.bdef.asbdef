@@ -1,0 +1,69 @@
+unmanaged implementation in class zbp_i_price_header unique;
+strict ( 1 );
+
+define behavior for ZI_PRICE_HEADER alias Header
+
+//late numbering
+lock master
+ authorization master ( instance )
+etag master LastChangedAt
+{
+  field ( readonly ) HeadUuid, Time, Currency;
+  field ( mandatory ) Price, Division, Pdate, Plant;
+  field ( readonly  ) LastChangedAt, LastChangedBy, CreatedAt, CreatedBy, LocalLastChangedAt;
+
+  create;
+  update;
+  delete;
+  association _Item { create; }
+
+
+  //  validation validate_date on save { field Pdate ; create; }
+  static function defaultheadervalue result [1] $self;
+  //  function deaultitem result [1] $self;
+  mapping for zdt_price_header
+    {
+      HeadUuid = head_uuid;
+      Pdate    = pdate;
+      Division = division;
+      Time     = time;
+      Price    = price;
+      Currency = currency;
+    }
+
+}
+
+define behavior for ZI_PRICE_ITEM alias Item implementation in class zbp_i_price_item unique
+//late numbering
+lock dependent by _Header
+ authorization dependent by _Header
+etag dependent by _Header
+{
+  field ( readonly ) HeadUuid, ItemUuid;
+  field ( mandatory ) Material;
+  field ( readonly ) CreatedBy, LastChangedBy, LocalLastChangedAt;
+
+  update;
+  delete;
+
+
+  //  action get_items result [1] $self;
+  association _Header;
+  //  function defaultitemvalue parameter ZI_PRICE_HEADER result [1] $self;
+  mapping for zdt_price_item
+    {
+      ItemUuid     = item_uuid;
+      HeadUuid     = head_uuid;
+      Material     = matnr;
+      MaterialDesc = maktx;
+      Qty          = qty;
+      Uom          = uom;
+      Bprice       = bprice;
+      Pprice       = pprice;
+      Bvalue       = bvalue;
+      Scost        = scost;
+      Acost        = acost;
+      Sprice       = sprice;
+    }
+
+}

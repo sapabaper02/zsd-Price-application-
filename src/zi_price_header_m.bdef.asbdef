@@ -1,0 +1,100 @@
+managed; // implementation in class zbp_i_price_header_m unique;
+strict ( 1 );
+with draft;
+
+define behavior for ZI_PRICE_HEADER_M alias Header
+implementation in class zbp_i_price_header_m unique
+persistent table zdt_price_header
+draft table zdt_header_d
+lock master total etag LastChangedAt
+authorization master ( instance )
+etag master LocalLastChangedAt
+{
+
+  create;
+  update;  //( precheck );
+  delete;
+
+  validation validDate on save { create; update; }
+  determination savePrice on save { field price; create; }
+  determination defaultData on modify { field Price; create; }
+
+  draft determine action Prepare
+  {
+    validation validDate;
+    validation Item~changeMaterial;
+  }
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+
+  field ( numbering : managed, readonly ) HeadUuid;
+  field ( readonly ) Time, Currency, ttime, ftime;
+  field ( mandatory ) Price, Division, Pdate, Plant;
+  field ( readonly ) LastChangedAt, LastChangedBy, CreatedAt, CreatedBy, LocalLastChangedAt;
+
+  association _Item { create ( features : instance ); with draft; }
+  mapping for zdt_price_header
+    {
+      HeadUuid           = head_uuid;
+      Pdate              = pdate;
+      Division           = division;
+      Time               = time;
+      Price              = price;
+      Currency           = currency;
+      Plant              = plant;
+      ttime              = ttime;
+      ftime              = ftime;
+      cnt                = cnt;
+      CreatedAt          = created_at;
+      CreatedBy          = created_by;
+      LastChangedAt      = last_changed_at;
+      LastChangedBy      = last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+
+}
+
+
+define behavior for ZI_PRICE_ITEM_M alias Item
+implementation in class zbp_i_price_item_m unique
+persistent table zdt_price_item
+draft table zdt_item_d
+lock dependent by _Header
+authorization dependent by _Header
+etag master LocalLastChangedAt
+{
+  field ( readonly, numbering : managed ) ItemUuid;
+  field ( readonly ) HeadUuid;
+  field ( mandatory ) Material;
+  field ( readonly ) CreatedBy, LastChangedBy, LocalLastChangedAt;
+
+  update;
+  delete;
+  determination setItemData on modify { field Material; create; }
+  validation changeMaterial on save { create; update; }
+
+
+  association _Header { with draft; }
+  mapping for zdt_price_item
+    {
+      ItemUuid           = item_uuid;
+      HeadUuid           = head_uuid;
+      Material           = matnr;
+      MaterialDesc       = maktx;
+      Qty                = qty;
+      Uom                = uom;
+      Bprice             = bprice;
+      Pprice             = pprice;
+      Bvalue             = bvalue;
+      Scost              = scost;
+      Acost              = acost;
+      Sprice             = sprice;
+      CreatedBy          = created_by;
+      LastChangedBy      = last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+
+}

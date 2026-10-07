@@ -1,0 +1,96 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'AdditionalCost',
+                typeNamePlural: 'AdditonalCosts',
+                title: { type: #STANDARD, label: 'Additional Cost', value: 'Material' } }
+              }
+annotate view ZC_ADDTN_COST with
+{
+  @UI.facet: [ { id:              'AddCost',
+               purpose:         #STANDARD,
+               type:            #IDENTIFICATION_REFERENCE,
+               label:           'Additional Cost',
+               position:        10 } ]
+
+  @UI.hidden: true
+  Costuuid;
+
+  @UI: {  lineItem: [{ position: 10 }],
+          identification: [{position : 10 }] ,
+          selectionField: [{position : 10 }]
+       }
+  @EndUserText.label: 'Material'
+  Material;
+
+  @UI: {  lineItem: [{ position: 20 }],
+          identification: [{position : 20 }] ,
+          selectionField: [{position : 20 }]
+       }
+  @EndUserText.label: 'Plant'
+  Plant;
+
+  @UI: {  lineItem: [{ position: 30 }],
+          identification: [{position : 30 }]
+       }
+  @EndUserText.label: 'From Date'
+  FDate;
+
+
+  @UI: {  lineItem: [{ position: 40 }],
+         identification: [{position : 40 }],
+         selectionField: [{position : 30 }]
+      }
+  @EndUserText.label: 'Division'
+  Division;
+
+  @UI: {  lineItem: [{ position: 50 }],
+          identification: [{position : 50 }]
+       }
+  @EndUserText.label: 'Packing Price'
+  Pprice;
+
+  @UI: {  lineItem: [{ position: 60 }],
+          identification: [{position : 60 }]
+       }
+  @EndUserText.label: 'Brand Value'
+  Bvalue;
+
+  @UI: {  lineItem: [{ position: 70 }],
+          identification: [{position : 70 }]
+       }
+  @EndUserText.label: 'Scheme Cost'
+  Scost;
+
+  @UI: {  lineItem: [{ position: 80 }],
+          identification: [{position : 80 }]
+       }
+  @EndUserText.label: 'Admin Cost'
+  Acost;
+
+  @UI: {  lineItem: [{ position: 90 }],
+          identification: [{position : 90 }]
+       }
+  @EndUserText.label: 'Currency'
+  Currency;
+
+  @UI: {  lineItem: [{ position: 100 }],
+          identification: [{position : 100 }]
+           }
+  @EndUserText.label: 'To Date'
+  TDate;
+
+  @UI.hidden: true
+  Createdby;
+
+  @UI.hidden: true
+  Createdat;
+
+  @UI.hidden: true
+  Lastchangedby;
+
+  @UI.hidden: true
+  Lastchangedat;
+
+  @UI.hidden: true
+  Locallastchangedat;
+}

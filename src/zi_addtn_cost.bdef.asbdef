@@ -1,0 +1,52 @@
+managed implementation in class zbp_i_addtn_cost unique;
+strict ( 1 );
+with draft;
+
+define behavior for ZI_ADDTN_COST alias Cost
+persistent table zdt_addtn_cost
+draft table zdt_cost_d
+lock master total etag LastChangedAt
+authorization master ( instance )
+etag master Locallastchangedat
+{
+  create;
+  update;
+  delete;
+
+  validation validMaterial on save { create; update; }
+  determination defaultData on modify { field Material; create; }
+
+  draft determine action Prepare
+  {
+    validation validMaterial;
+  }
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+
+  field ( numbering : managed, readonly ) Costuuid;
+  field ( mandatory ) Material, Plant, fdate;
+  field ( readonly ) Currency, Tdate, LastChangedAt, LastChangedBy, CreatedAt, CreatedBy, LocalLastChangedAt;
+  mapping for zdt_addtn_cost
+    {
+      Costuuid           = costuuid;
+      Material           = material;
+      Plant              = plant;
+      Fdate              = fdate;
+      Tdate              = tdate;
+      division           = division;
+      pprice             = pprice;
+      bvalue             = bvalue;
+      scost              = scost;
+      acost              = acost;
+      currency           = currency;
+      createdby          = createdby;
+      createdat          = createdat;
+      lastchangedby      = lastchangedby;
+      lastchangedat      = lastchangedat;
+      locallastchangedat = locallastchangedat;
+    }
+
+}

@@ -1,0 +1,35 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Additional Cost",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Additional Cost"
+  },
+  "ui5AppDetails": {
+    "appId": "zadditonalcost"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_657F463C853B93DA556BD84A49B7184B6101DF60_TM",
+    "semanticObject": "z_additional_cost",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_657F463C853B93DA556BD84A49B7184B6101DF60_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Additional Cost",
+        "subtitle": "Additional Cost"
+      }
+    }
+  ]
+}

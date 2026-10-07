@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Cost Application'
+define service ZUI_ADDTN_COST {
+  expose ZC_ADDTN_COST;
+}

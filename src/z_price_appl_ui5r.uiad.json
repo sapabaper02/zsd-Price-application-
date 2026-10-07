@@ -1,0 +1,35 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Price Application",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Price Application"
+  },
+  "ui5AppDetails": {
+    "appId": "zpriceapplication"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_21577706FF9E7D231F35A39E09E534591B71C752_TM",
+    "semanticObject": "z_price_app",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_21577706FF9E7D231F35A39E09E534591B71C752_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Price Application",
+        "subtitle": "Price Application"
+      }
+    }
+  ]
+}

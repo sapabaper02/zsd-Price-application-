@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition for Price Application'
+define service ZUI_PRICE_HEADER_M {
+  expose ZC_PRICE_HEADER_M;
+  expose ZC_PRICE_ITEM_M;
+}

@@ -1,0 +1,64 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Price',
+                typeNamePlural: 'Prices',
+                title: { type: #STANDARD, label: 'Price Application', value: 'Pdate' } },
+  presentationVariant: [{ sortOrder: [{ by: 'Pdate', direction:  #DESC }] }] }
+annotate view ZC_PRICE_HEADER with
+{
+
+  @UI.facet: [ { id:              'Price',
+                   purpose:         #STANDARD,
+                   type:            #IDENTIFICATION_REFERENCE,
+                   label:           'Price',
+                   position:        10 },
+                 { id:              'Material',
+                   purpose:         #STANDARD,
+                   type:            #LINEITEM_REFERENCE,
+                   label:           'Material',
+                   position:        20,
+                   targetElement:   '_Item'} ]
+
+  @UI:{ identification: [{ position: 1, label: 'Head UUID' }] }
+  HeadUuid;
+  @UI: {  lineItem:       [ { position: 10 } ],
+        identification: [ { position: 10 } ],
+        selectionField: [ { position: 10 } ] }
+  @EndUserText.label: 'Date'
+  Pdate;
+  @UI: {  lineItem:       [ { position: 20 } ],
+        identification: [ { position: 20 } ],
+        selectionField: [ { position: 20 } ] }
+  @EndUserText.label: 'Plant'
+  Plant;
+  @UI: {  lineItem:       [ { position: 30 } ],
+        identification: [ { position: 30 } ],
+        selectionField: [ { position: 30 } ] }
+  @EndUserText.label: 'Division'
+  Division;
+  @UI: {  lineItem:       [ { position: 40 } ],
+        identification: [ { position: 40 } ] }
+  @EndUserText.label: 'Time'
+  Time;
+  @UI: {  lineItem:       [ { position: 50 } ],
+        identification: [ { position: 50 } ] }
+  @EndUserText.label: 'Price'
+  Price;
+  @UI: {  lineItem:       [ { position: 60 } ],
+        identification: [ { position: 60 } ] }
+  @EndUserText.label: 'Currency'
+  Currency;
+  @UI: {  lineItem:       [ { position: 70 } ],
+        identification: [ { position: 70 } ] }
+  @UI.hidden: true
+  CreatedBy;
+  @UI.hidden: true
+  CreatedAt;
+  @UI.hidden: true
+  LastChangedBy;
+  @UI.hidden: true
+  LastChangedAt;
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+}

@@ -1,0 +1,65 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Material',
+                typeNamePlural: 'Materials',
+                title: { type: #STANDARD, value: 'Material' } } }
+annotate view ZC_PRICE_ITEM_M
+    with 
+{
+    @UI.facet: [ { id:            'Item',
+                 purpose:       #STANDARD,
+                 type:          #IDENTIFICATION_REFERENCE,
+                 label:         'Material',
+                 position:      10 }  ]
+     @UI: { identification: [ { position: 10, label: 'Item UUID'  } ] }
+    ItemUuid;
+    @UI.hidden: true
+    HeadUuid;
+    @UI: { lineItem:       [ { position: 20, importance: #HIGH } ],
+           identification: [ { position: 20 } ] }
+    @EndUserText.label: 'Item Code'     
+    Material;
+     @UI: { lineItem:       [ { position: 30 } ],
+         identification: [ { position: 30 } ] }
+    @EndUserText.label: 'Item Name'
+    MaterialDesc;
+    @UI: { lineItem:       [ { position: 40 } ],
+         identification: [ { position: 40 } ] }
+    @EndUserText.label: 'Quantity'
+    Qty;
+    @UI: { lineItem:       [ { position: 50 } ],
+         identification: [ { position: 50 } ] }
+    @EndUserText.label: 'UoM'
+    Uom;
+    @UI: { lineItem:       [ { position: 60 } ],
+         identification: [ { position: 60 } ] }
+    @EndUserText.label: 'Base Price'
+    Bprice;
+    @UI: { lineItem:       [ { position: 70 } ],
+         identification: [ { position: 70 } ] }
+    @EndUserText.label: 'Packing Price'
+    Pprice;
+    @UI: { lineItem:       [ { position: 80 } ],
+         identification: [ { position: 80 } ] }
+    @EndUserText.label: 'Brand Value'
+    Bvalue;
+    @UI: { lineItem:       [ { position: 90 } ],
+         identification: [ { position: 90 } ] }
+    @EndUserText.label: 'Scheme Cost'
+    Scost;
+    @UI: { lineItem:       [ { position: 100 } ],
+         identification: [ { position: 100 } ] }
+    @EndUserText.label: 'Admin Cost'     
+    Acost;
+    @UI: { lineItem:       [ { position: 110 } ],
+         identification: [ { position: 110 } ] }
+    @EndUserText.label: 'Selling Price'
+    Sprice;
+    @UI.hidden: true
+    CreatedBy;
+    @UI.hidden: true
+    LastChangedBy;
+    @UI.hidden: true
+    LocalLastChangedAt;
+    
+}
